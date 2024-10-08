@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Exam</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Exam</h1>
+        <form id="submitExamForm">
+            <input type="number" id="student_id" placeholder="Student ID" required><br>
+            <input type="number" id="exam_id" placeholder="Exam ID" required><br>
+            <textarea id="answers" placeholder="Enter answers as JSON (e.g., {1:'A', 2:'B'})" required></textarea><br>
+            <button type="submit">Submit Exam</button>
+        </form>
+       

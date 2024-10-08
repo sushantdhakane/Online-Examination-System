@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Exam</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Exam</h1>
+        <form id="createExamForm">
+            <input type="text" id="exam_name" placeholder="Exam Name" required><br>
+            <input type="number" id="total_marks" placeholder="Total Marks" required><br>
+            <input type="number" id="duration" placeholder="Duration (in minutes)" required><br>
+            <button type="submit">Create Exam</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        document.getElementById('createExamForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const exam_name = document.getElementById('exam_name').value;
+            const total_marks = document.getElementById('total_marks').value;
+            const duration = document.getElementById('duration').value;
+
+            const response = await fetch('/api/create_exam', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ exam_name, total_marks, duration })
+            });
+
+            const result = await response.json();
+            document.getElementById('message').innerText = result.message;
+        });
+    </script>
+</body>
+</html>
